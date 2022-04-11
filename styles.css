@@ -15,7 +15,31 @@ h2 {
   color: #E9E9F3;
 }
 
+input {
+  width: 50%;
+}
+
+form label, input, button {
+  margin: 5px;
+  width: 100%;
+}
+
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  padding: 30px 0px;
+}
+
+form label {
+  align-self: flex-start;
+}
+
 .wrapper {
+  display: flex;
+  justify-content: center;
   background-color: #A9AAD2;
   height: 30%;
 }
