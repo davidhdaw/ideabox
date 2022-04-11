@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Open Sans" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <h1>What's for Dinner?</h1>
+      <button class="add-a-recipe">ADD A RECIPE</button>
+    </header>
+    <main>
+      <form class="buttons-form">
+        <h2>What are you looking for?<span>*</span></h2>
+        <input type="radio" id="side" name="dish-type" value="side">Side<br>
+        <input type="radio" id="main" name="dish-type" value="main">Main Dish<br>
+        <input type="radio" id="dessert" name="dish-type" value="dessert">Dessert<br>
+        <input type="radio" id="entire" name="dish-type" value="entire">Entire Meal<br>
+        <button class="lets-cook">LET'S COOK!</button>
+      </form>
+      <section class="stockpot-box">
+        <img src= "assets/cookpot.svg" class="stockpot-img"></img>
+        <section class="dish-suggestion hidden">
+          <h3>You should make:</h3>
+            <p></p>
+        </section>
+      </section>
+    </main>
+    <footer class="add-new-recipes hidden">
+      <form class="type-and-name-blanks">
+        <label for="recipe-type">Recipe Type:</label>
+        <input type="text" id="recipe-type">
+        <label for="recipe-name">Recipe Name:</label>
+        <input type="text" id="recipe-name">
+        <button class="add-new">ADD NEW</button>
+      </form>
+    </footer>
+  </body>
+  <script type="text/javascript" src=idea.js></script>
+  <script type="text/javascript" src="main.js"></script>
+</html>
