@@ -24,13 +24,16 @@ h2 {
   border-radius: 2px;
   margin: 0px 20px;
   font-weight: 500;
-  /*
+}
 
-  Larger font size
-  more padding
-  no border
-  decrease width increase height
-  */
+.save {
+  background-color: #353567;
+  color: #E9E9F3;
+  font-size: 1.5em;
+  padding: 10px;
+  border: 0px;
+  border-radius: 2px;
+  font-weight: 500;
 }
 
 hr {
@@ -39,6 +42,12 @@ hr {
 
 input {
   width: 50%;
+  border: 2px solid #5356A4;
+  height: 150px;
+}
+
+.body-input {
+  height: 400px;
 }
 
 form label, input, button {
@@ -63,11 +72,11 @@ form label {
   display: flex;
   justify-content: center;
   background-color: #A9AAD2;
-  height: 30%;
+  height: 40%;
 }
 
 .cards-grid {
-  height: 70%;
+  height: 60%;
   background-color: #EAEAF4;
 }
 
