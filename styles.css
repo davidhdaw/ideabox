@@ -1,0 +1,19 @@
+aside {
+  background-color: #1F1F3D;
+}
+
+form {
+  background-color: #A9AAD2;
+}
+
+.cards-grid {
+  background-color: #EAEAF4;
+}
+
+body {
+  display: flex;
+}
+
+main {
+  width: 100%;
+}
