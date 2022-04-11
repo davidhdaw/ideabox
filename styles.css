@@ -107,6 +107,8 @@ main {
 }
 
 header {
+  display: flex;
+  justify-content: space-between;
   background-color: #1F1F3D;
 }
 
@@ -117,6 +119,8 @@ header {
 }
 
 footer {
+  display: flex;
+  align-items: center;
   background-color: #5356A4;
   color: #E9E9F3;
 }
