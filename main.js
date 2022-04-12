@@ -14,15 +14,24 @@ var cardGrid = document.querySelector('.cards-grid');
 //event listeners
 // titleInput.addEventListener('input', checkInput);
 // bodyInput.addEventListener('input', checkInput);
-saveButton.addEventListener('click', addToIdeaList);
+saveButton.addEventListener('click', triggerSave);
 
 // function checkInput {
 //
 // }
 
-//Data model functions
-function addToIdeaList(event) {
+function triggerSave(event) {
   event.preventDefault();
+  addToIdeaList();
+  cardGrid.innerHTML = "";
+  for (var i = 0; i < ideaList.length; i++) {
+    displayNewCard(ideaList[i]);
+  }
+  clearInputs();
+}
+
+//Data model functions
+function addToIdeaList() {
   var userTitle = titleInput.value;
   var userBody = bodyInput.value;
   var newIdea = new Idea(userTitle, userBody);
@@ -62,6 +71,5 @@ function clearInputs() {
 
 
 
-//Clear fields
 //Disable if nothing in fields
 //Create new card and display to cards grid
