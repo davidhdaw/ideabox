@@ -47,6 +47,10 @@ function displayNewCard(idea) {
   </article>`
 }
 
+function clearInputs() {
+  titleInput.value = "";
+  bodyInput.value = "";
+}
 
 
 
