@@ -2,7 +2,6 @@
   <head>
     <link rel="stylesheet" href="./styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-
   </head>
   <body>
     <aside>
@@ -20,14 +19,14 @@
           <label for='body-input'>Body:</label>
           <input type='text' class='body-input'>
           <button class='save'>Save</button>
-          <input type='text' class='search-ideas' placeholder='Search ideas'>
+          <input type='text' class='search-ideas' value='Search ideas'>
         </form>
       </section>
       <section class='cards-grid'>
         <article class='cards'>
           <header>
-            <img src = "assets/star.svg" alt = "favoriting idea" height = "25px" width = "25px">
-            <img src = "assets/delete.svg" alt = "delete favorite idea" height="25px" width="25px">
+            <img class='star-empty' src = "assets/star.svg" alt = "favoriting idea" height = "25px" width = "25px">
+            <img class='delete-card' src = "assets/delete.svg" alt = "delete favorite idea" height="25px" width="25px">
           </header>
           <section class = 'card-content'>
             <h3>Title</h3>
@@ -35,11 +34,12 @@
           </section>
           <footer>
             <img src = "assets/comment.svg" alt = "add comment" height="25px" width="25px">
-            Comment
+            <span>Comment</span>
           </footer>
         </article>
       </section>
     </main>
   </body>
+  <script type="text/javascript" src="idea.js"></script>
   <script type="text/javascript" src="main.js"></script>
 </html>
