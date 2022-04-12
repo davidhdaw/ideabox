@@ -16,10 +16,6 @@ var cardGrid = document.querySelector('.cards-grid');
 // bodyInput.addEventListener('input', checkInput);
 saveButton.addEventListener('click', triggerSave);
 
-// function checkInput {
-//
-// }
-
 function triggerSave(event) {
   event.preventDefault();
   addToIdeaList();
@@ -28,7 +24,7 @@ function triggerSave(event) {
     displayNewCard(ideaList[i]);
   }
   clearInputs();
-}
+};
 
 //Data model functions
 function addToIdeaList() {
@@ -36,7 +32,7 @@ function addToIdeaList() {
   var userBody = bodyInput.value;
   var newIdea = new Idea(userTitle, userBody);
   ideaList.push(newIdea);
-}
+};
 
 //DOM functions
 function displayNewCard(idea) {
@@ -54,22 +50,9 @@ function displayNewCard(idea) {
       <span>Comment</span>
     </footer>
   </article>`
-}
+};
 
 function clearInputs() {
   titleInput.value = "";
   bodyInput.value = "";
-}
-
-
-
-
-
-
-
-
-
-
-
-//Disable if nothing in fields
-//Create new card and display to cards grid
+};
