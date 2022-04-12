@@ -90,7 +90,7 @@ input {
 
 .cards-grid {
   display: grid;
-  /* height: 60%; */
+  height: 60%;
   background-color: #EAEAF4;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
