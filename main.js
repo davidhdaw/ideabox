@@ -28,6 +28,7 @@ function showStarredIdeas() {
       displayNewCard(ideaList[i]);
     }
   }
+  cardGrid.classList.add('favorite-mode')
 }
 
 function triggerSave(event) {
@@ -51,11 +52,19 @@ function addToIdeaList() {
   ideaList.push(newIdea);
 };
 
+
+
 function deleteCardEvent(event) {
-  if (event.target.classList.contains('delete-card')) {
+  if (event.target.classList.contains('delete-card') && cardGrid.classList.contains('favorite-mode')) {
     var idNum = parseInt(event.target.id);
     deleteFromArray(idNum);
-    updateCardGrid();
+    showStarredIdeas();
+    return;
+  } else if (event.target.classList.contains('delete-card')) {
+      var idNum = parseInt(event.target.id);
+      deleteFromArray(idNum);
+      updateCardGrid();
+      return;
   }
 }
 
