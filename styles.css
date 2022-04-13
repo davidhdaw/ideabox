@@ -135,3 +135,7 @@ footer {
 .hidden {
   display: none!important;
 }
+
+.delete-card {
+  cursor: pointer;
+}
