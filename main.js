@@ -23,16 +23,17 @@ cardGrid.addEventListener('click', favoriteCardEvent);
 function triggerSave(event) {
   event.preventDefault();
   addToIdeaList();
+  updateCardGrid();
+  clearInputs();
+};
+
+function updateCardGrid() {
   cardGrid.innerHTML = "";
   for (var i = 0; i < ideaList.length; i++) {
     displayNewCard(ideaList[i]);
   }
-  clearInputs();
-};
+}
 
-
-
-//Data model functions
 function addToIdeaList() {
   var userTitle = titleInput.value;
   var userBody = bodyInput.value;
@@ -44,10 +45,7 @@ function deleteCardEvent(event) {
   if (event.target.classList.contains('delete-card')) {
     var idNum = parseInt(event.target.id);
     deleteFromArray(idNum);
-    cardGrid.innerHTML = "";
-    for (var i = 0; i < ideaList.length; i++) {
-      displayNewCard(ideaList[i]);
-    }
+    updateCardGrid();
   }
 }
 
@@ -63,8 +61,10 @@ function favoriteCardEvent(event) {
   var idNum = parseInt(event.target.id);
   favoriteIdea(idNum);
   if (event.target.classList.contains('star-empty')) {
-  event.target.outerHTML = `<img class='star-active' id=${event.target.id} src = "assets/star-active.svg" alt = "favoriting idea" height = "25px" width = "25px">`;} else if (event.target.classList.contains('star-active')) {
-  event.target.outerHTML = `<img class='star-empty' id=${event.target.id} src = "assets/star.svg" alt = "favoriting idea" height = "25px" width = "25px">`;}
+    event.target.outerHTML = `<img class='star-active' id=${event.target.id} src="assets/star-active.svg" alt="favoriting idea" height="25px" width="25px">`;
+  } else if (event.target.classList.contains('star-active')) {
+    event.target.outerHTML = `<img class='star-empty' id=${event.target.id} src="assets/star.svg" alt="favoriting idea" height="25px" width ="25px">`;
+  }
 }
 
 function favoriteIdea(cardId) {
@@ -75,19 +75,27 @@ function favoriteIdea(cardId) {
   }
 }
 
-//DOM functions
+function checkStarImage(idea) {
+  if (idea.star) {
+    return `<img class='star-active' id=${idea.id} src="assets/star-active.svg" alt="favoriting idea" height="25px" width="25px">`;
+  } else {
+    return `<img class='star-empty' id=${idea.id} src="assets/star.svg" alt="favoriting idea" height="25px" width="25px">`;
+  }
+}
+
 function displayNewCard(idea) {
+  var starCheck = checkStarImage(idea);
   cardGrid.innerHTML += `<article class='cards'>
-    <header>
-      <img class='star-empty' id=${idea.id} src = "assets/star.svg" alt = "favoriting idea" height = "25px" width = "25px">
-      <img class='delete-card' id=${idea.id} src = "assets/delete.svg" alt = "delete favorite idea" height="25px" width="25px">
+    <header>` +
+    starCheck +
+    `<img class='delete-card' id=${idea.id} src="assets/delete.svg" alt="delete favorite idea" height="25px" width="25px">
     </header>
     <section class = 'card-content'>
       <h3>${idea.title}</h3>
       <p>${idea.body}</p>
     </section>
     <footer>
-      <img src = "assets/comment.svg" alt = "add comment" height="25px" width="25px">
+      <img src = "assets/comment.svg" alt ="add comment" height="25px" width="25px">
       <span>Comment</span>
     </footer>
   </article>`
