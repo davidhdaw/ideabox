@@ -136,6 +136,6 @@ footer {
   display: none!important;
 }
 
-.delete-card {
+.delete-card, .star-empty, .star-active {
   cursor: pointer;
 }

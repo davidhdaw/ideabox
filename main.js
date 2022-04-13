@@ -18,6 +18,7 @@ bodyInput.addEventListener('input', checkInput);
 saveButton.addEventListener('click', triggerSave);
 fakeButton.addEventListener('click', preventFakeButtonReload);
 cardGrid.addEventListener('click', deleteCardEvent);
+cardGrid.addEventListener('click', favoriteCardEvent);
 
 function triggerSave(event) {
   event.preventDefault();
@@ -29,6 +30,8 @@ function triggerSave(event) {
   clearInputs();
 };
 
+
+
 //Data model functions
 function addToIdeaList() {
   var userTitle = titleInput.value;
@@ -38,11 +41,13 @@ function addToIdeaList() {
 };
 
 function deleteCardEvent(event) {
-  var idNum = parseInt(event.target.id);
-  deleteFromArray(idNum);
-  cardGrid.innerHTML = "";
-  for (var i = 0; i < ideaList.length; i++) {
-    displayNewCard(ideaList[i]);
+  if (event.target.classList.contains('delete-card')) {
+    var idNum = parseInt(event.target.id);
+    deleteFromArray(idNum);
+    cardGrid.innerHTML = "";
+    for (var i = 0; i < ideaList.length; i++) {
+      displayNewCard(ideaList[i]);
+    }
   }
 }
 
@@ -54,11 +59,27 @@ function deleteFromArray(cardId) {
   }
 }
 
+function favoriteCardEvent(event) {
+  var idNum = parseInt(event.target.id);
+  favoriteIdea(idNum);
+  if (event.target.classList.contains('star-empty')) {
+  event.target.outerHTML = `<img class='star-active' id=${event.target.id} src = "assets/star-active.svg" alt = "favoriting idea" height = "25px" width = "25px">`;} else if (event.target.classList.contains('star-active')) {
+  event.target.outerHTML = `<img class='star-empty' id=${event.target.id} src = "assets/star.svg" alt = "favoriting idea" height = "25px" width = "25px">`;}
+}
+
+function favoriteIdea(cardId) {
+  for (var i = 0; i < ideaList.length; i++) {
+    if (cardId === ideaList[i].id) {
+    ideaList[i].updateIdea();
+    }
+  }
+}
+
 //DOM functions
 function displayNewCard(idea) {
   cardGrid.innerHTML += `<article class='cards'>
     <header>
-      <img class='star-empty' src = "assets/star.svg" alt = "favoriting idea" height = "25px" width = "25px">
+      <img class='star-empty' id=${idea.id} src = "assets/star.svg" alt = "favoriting idea" height = "25px" width = "25px">
       <img class='delete-card' id=${idea.id} src = "assets/delete.svg" alt = "delete favorite idea" height="25px" width="25px">
     </header>
     <section class = 'card-content'>
