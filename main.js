@@ -40,6 +40,10 @@ function addToIdeaList() {
 function deleteCardEvent(event) {
   var idNum = parseInt(event.target.id);
   deleteFromArray(idNum);
+  cardGrid.innerHTML = "";
+  for (var i = 0; i < ideaList.length; i++) {
+    displayNewCard(ideaList[i]);
+  }
 }
 
 function deleteFromArray(cardId) {
