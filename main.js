@@ -65,8 +65,6 @@ function favoriteCardEvent(event) {
   if (event.target.classList.contains('star-empty')) {
   event.target.outerHTML = `<img class='star-active' id=${event.target.id} src = "assets/star-active.svg" alt = "favoriting idea" height = "25px" width = "25px">`;} else if (event.target.classList.contains('star-active')) {
   event.target.outerHTML = `<img class='star-empty' id=${event.target.id} src = "assets/star.svg" alt = "favoriting idea" height = "25px" width = "25px">`;}
-  //target by ID the img element
-  //rewrite the image element with star-active.svg
 }
 
 function favoriteIdea(cardId) {
