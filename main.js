@@ -22,6 +22,23 @@ cardGrid.addEventListener('click', deleteCardEvent);
 cardGrid.addEventListener('click', favoriteCardEvent);
 showStarredIdeasButton.addEventListener('click', showStarredIdeas);
 showAllIdeasButton.addEventListener('click', showAllIdeas);
+searchIdeas.addEventListener('input', searchCards);
+
+
+function searchCards() {
+  var searchValue = searchIdeas.value;
+  cardGrid.innerHTML = "";
+  for (var i = 0; i < ideaList.length; i++) {
+    if (ideaList[i].body.includes(searchValue) || ideaList[i].title.includes(searchValue)) {
+      displayNewCard(ideaList[i]);
+    }
+  }
+}
+
+// for loop
+// if ideaList[i].body.includes(searchIdeas.value) || ideaList[i].title.includes(searchIdeas.value)
+// then print it
+
 
 
 function showAllIdeas() {
