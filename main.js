@@ -17,6 +17,7 @@ titleInput.addEventListener('input', checkInput);
 bodyInput.addEventListener('input', checkInput);
 saveButton.addEventListener('click', triggerSave);
 fakeButton.addEventListener('click', preventFakeButtonReload);
+cardGrid.addEventListener('click', deleteCardEvent);
 
 function triggerSave(event) {
   event.preventDefault();
@@ -36,12 +37,25 @@ function addToIdeaList() {
   ideaList.push(newIdea);
 };
 
+function deleteCardEvent(event) {
+  var idNum = parseInt(event.target.id);
+  deleteFromArray(idNum);
+}
+
+function deleteFromArray(cardId) {
+  for (var i = 0; i < ideaList.length; i++) {
+    if (cardId === ideaList[i].id) {
+    ideaList.splice(i, 1);
+    }
+  }
+}
+
 //DOM functions
 function displayNewCard(idea) {
   cardGrid.innerHTML += `<article class='cards'>
     <header>
       <img class='star-empty' src = "assets/star.svg" alt = "favoriting idea" height = "25px" width = "25px">
-      <img class='delete-card' src = "assets/delete.svg" alt = "delete favorite idea" height="25px" width="25px">
+      <img class='delete-card' id=${idea.id} src = "assets/delete.svg" alt = "delete favorite idea" height="25px" width="25px">
     </header>
     <section class = 'card-content'>
       <h3>${idea.title}</h3>
