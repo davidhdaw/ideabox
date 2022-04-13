@@ -19,6 +19,16 @@ saveButton.addEventListener('click', triggerSave);
 fakeButton.addEventListener('click', preventFakeButtonReload);
 cardGrid.addEventListener('click', deleteCardEvent);
 cardGrid.addEventListener('click', favoriteCardEvent);
+showStarredIdeasButton.addEventListener('click', showStarredIdeas);
+
+function showStarredIdeas() {
+  cardGrid.innerHTML = "";
+  for (var i = 0; i < ideaList.length; i++) {
+    if (ideaList[i].star) {
+      displayNewCard(ideaList[i]);
+    }
+  }
+}
 
 function triggerSave(event) {
   event.preventDefault();
