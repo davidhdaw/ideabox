@@ -84,8 +84,16 @@ input {
   font-size: 1.5em;
   font-weight: 500;
   padding: 10px;
-  border: 0px;
+  /* border: 0px; */
   border-radius: 2px;
+}
+
+.fake-save {
+  background-color: #666698;
+}
+
+.real-save {
+  cursor: pointer;
 }
 
 .cards-grid {
@@ -122,4 +130,8 @@ footer {
   align-items: center;
   background-color: #5356A4;
   color: #E9E9F3;
+}
+
+.hidden {
+  display: none!important;
 }
