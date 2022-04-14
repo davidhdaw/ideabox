@@ -49,7 +49,7 @@ main {
   display: flex;
   justify-content: center;
   background-color: #A9AAD2;
-  height: 40%;
+  height: 50%;
 }
 
 form {
@@ -71,7 +71,7 @@ form label, input, button, .body-input {
   width: 100%;
 }
 
-input {
+input, .body-input {
   border: 2px solid #5356A4;
 }
 
@@ -93,31 +93,32 @@ input {
 }
 
 .search-field {
-  height: 50px;
   display: flex;
   padding: 0px;
   margin-left: 5px;
-  margin-right: 0px;
+  margin-top: 10px;
   width: 100%;
 }
 
 .magnifying-glass {
   background-color: #353567;
-
+  height: 25px;
+  padding: 10px;
 }
 
 .search-ideas, .search-favorite-ideas {
-  height: 50px;
   margin: 0px;
 }
 
 .cards-grid {
   display: grid;
-  height: 60%;
+  height: 50%;
   background-color: #EAEAF4;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   padding: 20px;
+  overflow: auto;
+  margin-bottom: 0px;
 }
 
 .cards {
