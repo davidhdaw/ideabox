@@ -59,19 +59,19 @@ form {
   padding: 30px 0px;
 }
 
-form label {
-  align-self: flex-start;
-  font-weight: bold;
-}
-
 form label, input, button, .body-input {
-  font-family: inherit;
   font-size: 1em;
   margin: 5px;
   width: 100%;
 }
 
+form label {
+  align-self: flex-start;
+  font-weight: bold;
+}
+
 input, .body-input {
+  font-family: inherit;
   border: 2px solid #5356A4;
 }
 
@@ -135,6 +135,10 @@ header {
   background-color: #1F1F3D;
 }
 
+.delete-card, .star-empty, .star-active {
+  cursor: pointer;
+}
+
 .card-content {
   background-color: #FFFFFF;
   color: #1F1F3D;
@@ -150,8 +154,4 @@ footer {
 
 .hidden {
   display: none!important;
-}
-
-.delete-card, .star-empty, .star-active {
-  cursor: pointer;
 }
