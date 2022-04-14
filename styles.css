@@ -64,18 +64,15 @@ form label {
   font-weight: bold;
 }
 
-form label, input, button {
+form label, input, button, .body-input {
+  font-family: inherit;
+  font-size: 1em;
   margin: 5px;
   width: 100%;
 }
 
 input {
-  height: 150px;
   border: 2px solid #5356A4;
-}
-
-.body-input {
-  height: 800px;
 }
 
 .save {
@@ -84,7 +81,6 @@ input {
   font-size: 1.5em;
   font-weight: 500;
   padding: 10px;
-  /* border: 0px; */
   border-radius: 2px;
 }
 
