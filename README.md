@@ -27,7 +27,7 @@ Ideabox is a webpage that allows you to add your ideas to a virtual box so that 
 3. Run `open index.html`.
 
 ### Deployment Link
-
+- [Click here for deployed webpage.](https://davidhdaw.github.io/ideabox/)
 
 ### Features
 - User can add a title and idea input to create a new idea card.
