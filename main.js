@@ -7,11 +7,13 @@ var bodyInput = document.querySelector('.body-input');
 var saveButton = document.querySelector('.real-save');
 var fakeButton = document.querySelector('.fake-save');
 var searchIdeas = document.querySelector('.search-ideas');
+var searchFavoriteIdeas = document.querySelector('.search-favorite-ideas');
 var starEmpty = document.querySelector('.star-empty');
 var deleteCard = document.querySelector('.delete-card');
 var commentButton = document.querySelector('footer');
 var cardGrid = document.querySelector('.cards-grid');
 var showAllIdeasButton = document.querySelector('.show-all-ideas');
+
 
 //event listeners
 titleInput.addEventListener('input', checkInput);
@@ -22,6 +24,34 @@ cardGrid.addEventListener('click', deleteCardEvent);
 cardGrid.addEventListener('click', favoriteCardEvent);
 showStarredIdeasButton.addEventListener('click', showStarredIdeas);
 showAllIdeasButton.addEventListener('click', showAllIdeas);
+searchIdeas.addEventListener('input', searchCards);
+searchFavoriteIdeas.addEventListener('input', searchFavoriteCards);
+
+
+function searchCards() {
+  var searchValue = searchIdeas.value;
+  cardGrid.innerHTML = "";
+  for (var i = 0; i < ideaList.length; i++) {
+    if (ideaList[i].body.includes(searchValue) || ideaList[i].title.includes(searchValue)) {
+      displayNewCard(ideaList[i]);
+    }
+  }
+}
+
+function searchFavoriteCards() {
+  var searchValue = searchFavoriteIdeas.value;
+  cardGrid.innerHTML = "";
+  for (var i = 0; i < ideaList.length; i++) {
+    if ((ideaList[i].star && ideaList[i].body.includes(searchValue)) || (ideaList[i].star && ideaList[i].title.includes(searchValue))) {
+      displayNewCard(ideaList[i]);
+    }
+  }
+}
+
+// for loop
+// if ideaList[i].body.includes(searchIdeas.value) || ideaList[i].title.includes(searchIdeas.value)
+// then print it
+
 
 
 function showAllIdeas() {
@@ -32,6 +62,8 @@ function showAllIdeas() {
   cardGrid.classList.remove('favorite-mode');
   showAllIdeasButton.classList.add('hidden');
   showStarredIdeasButton.classList.remove('hidden');
+  searchFavoriteIdeas.classList.add('hidden')
+  searchIdeas.classList.remove('hidden')
 }
 
 
@@ -45,6 +77,8 @@ function showStarredIdeas() {
   cardGrid.classList.add('favorite-mode');
   showAllIdeasButton.classList.remove('hidden');
   showStarredIdeasButton.classList.add('hidden');
+  searchFavoriteIdeas.classList.remove('hidden')
+  searchIdeas.classList.add('hidden')
 }
 
 function triggerSave(event) {

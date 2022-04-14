@@ -71,12 +71,11 @@ form label, input, button {
 
 input {
   height: 150px;
-  width: 50%;
   border: 2px solid #5356A4;
 }
 
 .body-input {
-  height: 400px;
+  height: 800px;
 }
 
 .save {
@@ -95,6 +94,25 @@ input {
 
 .real-save {
   cursor: pointer;
+}
+
+.search-field {
+  height: 50px;
+  display: flex;
+  padding: 0px;
+  margin-left: 5px;
+  margin-right: 0px;
+  width: 100%;
+}
+
+.magnifying-glass {
+  background-color: #353567;
+
+}
+
+.search-ideas, .search-favorite-ideas {
+  height: 50px;
+  margin: 0px;
 }
 
 .cards-grid {
