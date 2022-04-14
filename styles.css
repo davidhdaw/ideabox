@@ -2,6 +2,7 @@ body {
   display: flex;
   font-family: "Open Sans";
   margin: 0px;
+  height: 100vh;
 }
 
 aside {
@@ -49,7 +50,13 @@ main {
   display: flex;
   justify-content: center;
   background-color: #A9AAD2;
-  height: 40%;
+  height: 50%;
+}
+
+form label, input, button, .body-input {
+  font-size: 1em;
+  margin: 5px;
+  /* width: 100%; */
 }
 
 form {
@@ -64,18 +71,9 @@ form label {
   font-weight: bold;
 }
 
-form label, input, button {
-  margin: 5px;
-  width: 100%;
-}
-
-input {
-  height: 150px;
+input, .body-input {
+  font-family: inherit;
   border: 2px solid #5356A4;
-}
-
-.body-input {
-  height: 800px;
 }
 
 .save {
@@ -84,7 +82,6 @@ input {
   font-size: 1.5em;
   font-weight: 500;
   padding: 10px;
-  /* border: 0px; */
   border-radius: 2px;
 }
 
@@ -97,31 +94,33 @@ input {
 }
 
 .search-field {
-  height: 50px;
   display: flex;
+  justify-content: center;
   padding: 0px;
-  margin-left: 5px;
-  margin-right: 0px;
+  margin-top: 10px;
   width: 100%;
 }
 
 .magnifying-glass {
   background-color: #353567;
-
+  height: 25px;
+  padding: 10px;
 }
 
 .search-ideas, .search-favorite-ideas {
-  height: 50px;
   margin: 0px;
+  width: 80%;
 }
 
 .cards-grid {
   display: grid;
-  height: 60%;
+  height: 50%;
   background-color: #EAEAF4;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   padding: 20px;
+  overflow: auto;
+  margin-bottom: 0px;
 }
 
 .cards {
@@ -136,6 +135,10 @@ header {
   display: flex;
   justify-content: space-between;
   background-color: #1F1F3D;
+}
+
+.delete-card, .star-empty, .star-active {
+  cursor: pointer;
 }
 
 .card-content {
@@ -153,8 +156,4 @@ footer {
 
 .hidden {
   display: none!important;
-}
-
-.delete-card, .star-empty, .star-active {
-  cursor: pointer;
 }
