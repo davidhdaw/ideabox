@@ -27,6 +27,38 @@ showAllIdeasButton.addEventListener('click', showAllIdeas);
 searchIdeas.addEventListener('input', searchCards);
 searchFavoriteIdeas.addEventListener('input', searchFavoriteCards);
 
+//Data model functions
+function addToIdeaList() {
+  var userTitle = titleInput.value;
+  var userBody = bodyInput.value;
+  var newIdea = new Idea(userTitle, userBody);
+  ideaList.push(newIdea);
+};
+
+function deleteFromArray(cardId) {
+  for (var i = 0; i < ideaList.length; i++) {
+    if (cardId === ideaList[i].id) {
+    ideaList.splice(i, 1);
+    }
+  }
+}
+
+function favoriteIdea(cardId) {
+  for (var i = 0; i < ideaList.length; i++) {
+    if (cardId === ideaList[i].id) {
+    ideaList[i].updateIdea();
+    }
+  }
+}
+
+//DOM manipulation functions
+function show(element) {
+  element.classList.remove('hidden')
+}
+
+function hide(element) {
+  element.classList.add('hidden');
+}
 
 function searchCards() {
   var searchValue = searchIdeas.value;
@@ -48,24 +80,17 @@ function searchFavoriteCards() {
   }
 }
 
-// for loop
-// if ideaList[i].body.includes(searchIdeas.value) || ideaList[i].title.includes(searchIdeas.value)
-// then print it
-
-
-
 function showAllIdeas() {
   cardGrid.innerHTML = "";
   for (var i = 0; i < ideaList.length; i++) {
     displayNewCard(ideaList[i]);
   }
   cardGrid.classList.remove('favorite-mode');
-  showAllIdeasButton.classList.add('hidden');
-  showStarredIdeasButton.classList.remove('hidden');
-  searchFavoriteIdeas.classList.add('hidden')
-  searchIdeas.classList.remove('hidden')
+  hide(showAllIdeasButton);
+  show(showStarredIdeasButton);
+  hide(searchFavoriteIdeas);
+  show(searchIdeas);
 }
-
 
 function showStarredIdeas() {
   cardGrid.innerHTML = "";
@@ -75,10 +100,10 @@ function showStarredIdeas() {
     }
   }
   cardGrid.classList.add('favorite-mode');
-  showAllIdeasButton.classList.remove('hidden');
-  showStarredIdeasButton.classList.add('hidden');
-  searchFavoriteIdeas.classList.remove('hidden')
-  searchIdeas.classList.add('hidden')
+  show(showAllIdeasButton);
+  hide(showStarredIdeasButton);
+  show(searchFavoriteIdeas);
+  hide(searchIdeas);
 }
 
 function triggerSave(event) {
@@ -95,15 +120,6 @@ function updateCardGrid() {
   }
 }
 
-function addToIdeaList() {
-  var userTitle = titleInput.value;
-  var userBody = bodyInput.value;
-  var newIdea = new Idea(userTitle, userBody);
-  ideaList.push(newIdea);
-};
-
-
-
 function deleteCardEvent(event) {
   if (event.target.classList.contains('delete-card') && cardGrid.classList.contains('favorite-mode')) {
     var idNum = parseInt(event.target.id);
@@ -111,18 +127,10 @@ function deleteCardEvent(event) {
     showStarredIdeas();
     return;
   } else if (event.target.classList.contains('delete-card')) {
-      var idNum = parseInt(event.target.id);
-      deleteFromArray(idNum);
-      updateCardGrid();
-      return;
-  }
-}
-
-function deleteFromArray(cardId) {
-  for (var i = 0; i < ideaList.length; i++) {
-    if (cardId === ideaList[i].id) {
-    ideaList.splice(i, 1);
-    }
+    var idNum = parseInt(event.target.id);
+    deleteFromArray(idNum);
+    updateCardGrid();
+    return;
   }
 }
 
@@ -133,14 +141,6 @@ function favoriteCardEvent(event) {
     event.target.outerHTML = `<img class='star-active' id=${event.target.id} src="assets/star-active.svg" alt="favoriting idea" height="25px" width="25px">`;
   } else if (event.target.classList.contains('star-active')) {
     event.target.outerHTML = `<img class='star-empty' id=${event.target.id} src="assets/star.svg" alt="favoriting idea" height="25px" width ="25px">`;
-  }
-}
-
-function favoriteIdea(cardId) {
-  for (var i = 0; i < ideaList.length; i++) {
-    if (cardId === ideaList[i].id) {
-    ideaList[i].updateIdea();
-    }
   }
 }
 
@@ -173,18 +173,18 @@ function displayNewCard(idea) {
 function clearInputs() {
   titleInput.value = "";
   bodyInput.value = "";
-  saveButton.classList.add('hidden');
-  fakeButton.classList.remove('hidden');
+  hide(saveButton);
+  show(fakeButton);
 };
 
 function checkInput(event) {
   event.preventDefault();
   if (titleInput.value && bodyInput.value) {
-    saveButton.classList.remove('hidden');
-    fakeButton.classList.add('hidden');
+    show(saveButton);
+    hide(fakeButton);
   } else {
-    saveButton.classList.add('hidden');
-    fakeButton.classList.remove('hidden');
+    hide(saveButton);
+    show(fakeButton);
   }
 }
 
