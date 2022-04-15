@@ -27,6 +27,38 @@ showAllIdeasButton.addEventListener('click', showAllIdeas);
 searchIdeas.addEventListener('input', searchCards);
 searchFavoriteIdeas.addEventListener('input', searchFavoriteCards);
 
+//Data model functions
+function addToIdeaList() {
+  var userTitle = titleInput.value;
+  var userBody = bodyInput.value;
+  var newIdea = new Idea(userTitle, userBody);
+  ideaList.push(newIdea);
+};
+
+function deleteFromArray(cardId) {
+  for (var i = 0; i < ideaList.length; i++) {
+    if (cardId === ideaList[i].id) {
+    ideaList.splice(i, 1);
+    }
+  }
+}
+
+function favoriteIdea(cardId) {
+  for (var i = 0; i < ideaList.length; i++) {
+    if (cardId === ideaList[i].id) {
+    ideaList[i].updateIdea();
+    }
+  }
+}
+
+//DOM manipulation functions
+function show(element) {
+  element.classList.remove('hidden')
+}
+
+function hide(element) {
+  element.classList.add('hidden');
+}
 
 function searchCards() {
   var searchValue = searchIdeas.value;
@@ -48,12 +80,6 @@ function searchFavoriteCards() {
   }
 }
 
-// for loop
-// if ideaList[i].body.includes(searchIdeas.value) || ideaList[i].title.includes(searchIdeas.value)
-// then print it
-
-
-
 function showAllIdeas() {
   cardGrid.innerHTML = "";
   for (var i = 0; i < ideaList.length; i++) {
@@ -65,11 +91,6 @@ function showAllIdeas() {
   hide(searchFavoriteIdeas);
   show(searchIdeas);
 }
-
-function show(element) {
-  element.classList.remove('hidden')
-}
-
 
 function showStarredIdeas() {
   cardGrid.innerHTML = "";
@@ -83,10 +104,6 @@ function showStarredIdeas() {
   hide(showStarredIdeasButton);
   show(searchFavoriteIdeas);
   hide(searchIdeas);
-}
-
-function hide(element) {
-  element.classList.add('hidden');
 }
 
 function triggerSave(event) {
@@ -103,15 +120,6 @@ function updateCardGrid() {
   }
 }
 
-function addToIdeaList() {
-  var userTitle = titleInput.value;
-  var userBody = bodyInput.value;
-  var newIdea = new Idea(userTitle, userBody);
-  ideaList.push(newIdea);
-};
-
-
-
 function deleteCardEvent(event) {
   if (event.target.classList.contains('delete-card') && cardGrid.classList.contains('favorite-mode')) {
     var idNum = parseInt(event.target.id);
@@ -119,18 +127,10 @@ function deleteCardEvent(event) {
     showStarredIdeas();
     return;
   } else if (event.target.classList.contains('delete-card')) {
-      var idNum = parseInt(event.target.id);
-      deleteFromArray(idNum);
-      updateCardGrid();
-      return;
-  }
-}
-
-function deleteFromArray(cardId) {
-  for (var i = 0; i < ideaList.length; i++) {
-    if (cardId === ideaList[i].id) {
-    ideaList.splice(i, 1);
-    }
+    var idNum = parseInt(event.target.id);
+    deleteFromArray(idNum);
+    updateCardGrid();
+    return;
   }
 }
 
@@ -141,14 +141,6 @@ function favoriteCardEvent(event) {
     event.target.outerHTML = `<img class='star-active' id=${event.target.id} src="assets/star-active.svg" alt="favoriting idea" height="25px" width="25px">`;
   } else if (event.target.classList.contains('star-active')) {
     event.target.outerHTML = `<img class='star-empty' id=${event.target.id} src="assets/star.svg" alt="favoriting idea" height="25px" width ="25px">`;
-  }
-}
-
-function favoriteIdea(cardId) {
-  for (var i = 0; i < ideaList.length; i++) {
-    if (cardId === ideaList[i].id) {
-    ideaList[i].updateIdea();
-    }
   }
 }
 
