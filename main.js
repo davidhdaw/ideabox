@@ -60,10 +60,14 @@ function showAllIdeas() {
     displayNewCard(ideaList[i]);
   }
   cardGrid.classList.remove('favorite-mode');
-  showAllIdeasButton.classList.add('hidden');
-  showStarredIdeasButton.classList.remove('hidden');
-  searchFavoriteIdeas.classList.add('hidden')
-  searchIdeas.classList.remove('hidden')
+  hide(showAllIdeasButton);
+  show(showStarredIdeasButton);
+  hide(searchFavoriteIdeas);
+  show(searchIdeas);
+}
+
+function show(element) {
+  element.classList.remove('hidden')
 }
 
 
@@ -75,10 +79,14 @@ function showStarredIdeas() {
     }
   }
   cardGrid.classList.add('favorite-mode');
-  showAllIdeasButton.classList.remove('hidden');
-  showStarredIdeasButton.classList.add('hidden');
-  searchFavoriteIdeas.classList.remove('hidden')
-  searchIdeas.classList.add('hidden')
+  show(showAllIdeasButton);
+  hide(showStarredIdeasButton);
+  show(searchFavoriteIdeas);
+  hide(searchIdeas);
+}
+
+function hide(element) {
+  element.classList.add('hidden');
 }
 
 function triggerSave(event) {
@@ -173,18 +181,18 @@ function displayNewCard(idea) {
 function clearInputs() {
   titleInput.value = "";
   bodyInput.value = "";
-  saveButton.classList.add('hidden');
-  fakeButton.classList.remove('hidden');
+  hide(saveButton);
+  show(fakeButton);
 };
 
 function checkInput(event) {
   event.preventDefault();
   if (titleInput.value && bodyInput.value) {
-    saveButton.classList.remove('hidden');
-    fakeButton.classList.add('hidden');
+    show(saveButton);
+    hide(fakeButton);
   } else {
-    saveButton.classList.add('hidden');
-    fakeButton.classList.remove('hidden');
+    hide(saveButton);
+    show(fakeButton);
   }
 }
 
