@@ -202,3 +202,15 @@ function storageToArray() {
     ideaList.push(parsedIdea);
   }
 }
+
+function repopulateIdeas() {
+  storageToArray();
+  ideaList.sort(function (a, b) {
+  return a.id - b.id;
+});
+  showAllIdeas();
+}
+//on page load
+//run storage to array
+//sort array by id numbers
+//print array
