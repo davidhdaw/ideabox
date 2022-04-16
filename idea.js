@@ -1,9 +1,9 @@
 class Idea {
-  constructor(title, body) {
+  constructor(title, body, star, id) {
     this.title = title
     this.body = body
-    this.star = false
-    this.id = Date.now()
+    this.star = star || false
+    this.id = id || Date.now()
   }
   updateIdea() {
     if (!this.star) {

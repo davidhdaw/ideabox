@@ -197,6 +197,8 @@ function preventFakeButtonReload(event) {
 function storageToArray() {
   var holdingArray = Object.values(localStorage)
   for (var i = 0; i<holdingArray.length; i++) {
-
+    var parsedObject = JSON.parse(holdingArray[i]);
+    var parsedIdea = new Idea (parsedObject.title, parsedObject.body, parsedObject.star, parsedObject.id);
+    ideaList.push(parsedIdea);
   }
 }
