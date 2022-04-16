@@ -26,6 +26,7 @@ showStarredIdeasButton.addEventListener('click', showStarredIdeas);
 showAllIdeasButton.addEventListener('click', showAllIdeas);
 searchIdeas.addEventListener('input', searchCards);
 searchFavoriteIdeas.addEventListener('input', searchFavoriteCards);
+window.addEventListener("load", repopulateIdeas);
 
 //Data model functions
 function addToIdeaList() {
