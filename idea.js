@@ -12,6 +12,14 @@ class Idea {
       this.star = false
     }
   }
-  //saveToStorage()
-  //deleteFromStorage()
+  saveToStorage() {
+    var ideaAsString = JSON.stringify(this);
+    localStorage.setItem(this.id, ideaAsString);
+  }
+  deleteFromStorage() {
+    localStorage.removeItem(this.id);
+  }
 }
+
+
+//save an object to local storage with
