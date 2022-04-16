@@ -33,11 +33,13 @@ function addToIdeaList() {
   var userBody = bodyInput.value;
   var newIdea = new Idea(userTitle, userBody);
   ideaList.push(newIdea);
+  newIdea.saveToStorage();
 };
 
 function deleteFromArray(cardId) {
   for (var i = 0; i < ideaList.length; i++) {
     if (cardId === ideaList[i].id) {
+    ideaList[i].deleteFromStorage();
     ideaList.splice(i, 1);
     }
   }
@@ -190,4 +192,11 @@ function checkInput(event) {
 
 function preventFakeButtonReload(event) {
   event.preventDefault();
+}
+
+function storageToArray() {
+  var holdingArray = Object.values(localStorage)
+  for (var i = 0; i<holdingArray.length; i++) {
+
+  }
 }

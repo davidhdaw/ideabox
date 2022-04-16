@@ -11,6 +11,7 @@ class Idea {
     } else {
       this.star = false
     }
+    this.saveToStorage()
   }
   saveToStorage() {
     var ideaAsString = JSON.stringify(this);
