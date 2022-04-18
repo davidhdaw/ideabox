@@ -35,7 +35,7 @@ Ideabox is a webpage that allows you to add your ideas to a virtual box so that 
 - User can favorite their best ideas, which can be viewed by clicking the _Show Starred Ideas_ button.
 ![Favorite Ideas](/assets/Gif%202%20ideabox.gif)
 - User can search for ideas that contain a specific word or phrase.
-![Search for Ideas](/assets/Gif%203%20ideabox.gif)
+![Search Ideas](/assets/Gif%203%20ideabox.gif)
 - User can delete idea cards once they are no longer needed.
 ![Delete Cards](/assets/Gif%204%20ideabox.gif)
 - Webpage has local storage feature.
