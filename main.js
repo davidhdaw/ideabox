@@ -1,7 +1,6 @@
 var ideaList = []
 
 //query selectors
-var showStarredIdeasButton = document.querySelector('.show-starred-ideas');
 var titleInput = document.querySelector('.title-input');
 var bodyInput = document.querySelector('.body-input');
 var saveButton = document.querySelector('.real-save');
@@ -12,8 +11,8 @@ var starEmpty = document.querySelector('.star-empty');
 var deleteCard = document.querySelector('.delete-card');
 var commentButton = document.querySelector('footer');
 var cardGrid = document.querySelector('.cards-grid');
+var showStarredIdeasButton = document.querySelector('.show-starred-ideas');
 var showAllIdeasButton = document.querySelector('.show-all-ideas');
-
 
 //event listeners
 titleInput.addEventListener('input', checkInput);
@@ -26,7 +25,7 @@ showStarredIdeasButton.addEventListener('click', showStarredIdeas);
 showAllIdeasButton.addEventListener('click', showAllIdeas);
 searchIdeas.addEventListener('input', searchCards);
 searchFavoriteIdeas.addEventListener('input', searchFavoriteCards);
-window.addEventListener("load", repopulateIdeas);
+window.addEventListener('load', repopulateIdeas);
 
 //Data model functions
 function addToIdeaList() {
@@ -44,7 +43,7 @@ function deleteFromArray(cardId) {
     ideaList.splice(i, 1);
     }
   }
-}
+};
 
 function favoriteIdea(cardId) {
   for (var i = 0; i < ideaList.length; i++) {
@@ -52,16 +51,25 @@ function favoriteIdea(cardId) {
     ideaList[i].updateIdea();
     }
   }
-}
+};
+
+function storageToArray() {
+  var holdingArray = Object.values(localStorage)
+  for (var i = 0; i<holdingArray.length; i++) {
+    var parsedObject = JSON.parse(holdingArray[i]);
+    var parsedIdea = new Idea (parsedObject.title, parsedObject.body, parsedObject.star, parsedObject.id);
+    ideaList.push(parsedIdea);
+  }
+};
 
 //DOM manipulation functions
 function show(element) {
-  element.classList.remove('hidden')
-}
+  element.classList.remove('hidden');
+};
 
 function hide(element) {
   element.classList.add('hidden');
-}
+};
 
 function searchCards() {
   var searchValue = searchIdeas.value;
@@ -71,7 +79,7 @@ function searchCards() {
       displayNewCard(ideaList[i]);
     }
   }
-}
+};
 
 function searchFavoriteCards() {
   var searchValue = searchFavoriteIdeas.value;
@@ -81,7 +89,7 @@ function searchFavoriteCards() {
       displayNewCard(ideaList[i]);
     }
   }
-}
+};
 
 function showAllIdeas() {
   cardGrid.innerHTML = "";
@@ -93,7 +101,7 @@ function showAllIdeas() {
   show(showStarredIdeasButton);
   hide(searchFavoriteIdeas);
   show(searchIdeas);
-}
+};
 
 function showStarredIdeas() {
   cardGrid.innerHTML = "";
@@ -107,7 +115,7 @@ function showStarredIdeas() {
   hide(showStarredIdeasButton);
   show(searchFavoriteIdeas);
   hide(searchIdeas);
-}
+};
 
 function triggerSave(event) {
   event.preventDefault();
@@ -121,7 +129,7 @@ function updateCardGrid() {
   for (var i = 0; i < ideaList.length; i++) {
     displayNewCard(ideaList[i]);
   }
-}
+};
 
 function deleteCardEvent(event) {
   if (event.target.classList.contains('delete-card') && cardGrid.classList.contains('favorite-mode')) {
@@ -135,7 +143,7 @@ function deleteCardEvent(event) {
     updateCardGrid();
     return;
   }
-}
+};
 
 function favoriteCardEvent(event) {
   var idNum = parseInt(event.target.id);
@@ -145,7 +153,7 @@ function favoriteCardEvent(event) {
   } else if (event.target.classList.contains('star-active')) {
     event.target.outerHTML = `<img class='star-empty' id=${event.target.id} src="assets/star.svg" alt="favoriting idea" height="25px" width ="25px">`;
   }
-}
+};
 
 function checkStarImage(idea) {
   if (idea.star) {
@@ -153,7 +161,7 @@ function checkStarImage(idea) {
   } else {
     return `<img class='star-empty' id=${idea.id} src="assets/star.svg" alt="favoriting idea" height="25px" width="25px">`;
   }
-}
+};
 
 function displayNewCard(idea) {
   var starCheck = checkStarImage(idea);
@@ -189,29 +197,16 @@ function checkInput(event) {
     hide(saveButton);
     show(fakeButton);
   }
-}
+};
 
 function preventFakeButtonReload(event) {
   event.preventDefault();
-}
-
-function storageToArray() {
-  var holdingArray = Object.values(localStorage)
-  for (var i = 0; i<holdingArray.length; i++) {
-    var parsedObject = JSON.parse(holdingArray[i]);
-    var parsedIdea = new Idea (parsedObject.title, parsedObject.body, parsedObject.star, parsedObject.id);
-    ideaList.push(parsedIdea);
-  }
-}
+};
 
 function repopulateIdeas() {
   storageToArray();
   ideaList.sort(function (a, b) {
-  return a.id - b.id;
-});
+    return a.id - b.id;
+  });
   showAllIdeas();
-}
-//on page load
-//run storage to array
-//sort array by id numbers
-//print array
+};
