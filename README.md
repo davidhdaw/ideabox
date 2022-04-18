@@ -34,14 +34,19 @@ Ideabox is a webpage that allows you to add your ideas to a virtual box so that 
 - User can favorite their best ideas, which can be viewed by clicking the _Show Starred Ideas_ button.
 - User can search for ideas that contain a specific word or phrase.
 - User can delete idea cards once they are no longer needed.
+- Webpage has local storage feature.
 
 
 ### Reflection
-
+- We decided to add features (such as local storage) to the webpage, even though these lessons were not formally taught. This gave us
+an opportunity to do our own researching. This will carry over into our careers as software developers as we will often need
+to do independent research to find solutions.
+- We learned that some functionality was easy to reuse, however other functions were unexpectedly difficult to reuse. It was interesting to see
+how the code we wrote in some ways dictated what code we wrote later.
+- Teamwork makes the dream work. 
 
 
 ### Future Features
-- Add local storage feature.
 - Allow user to edit ideas once they are submitted.
 - Create functionality so that when the user clicks the idea card, they are taken to a new page where they can add additional notes and information about their idea.
 
