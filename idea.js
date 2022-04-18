@@ -1,9 +1,9 @@
 class Idea {
-  constructor(title, body) {
+  constructor(title, body, star, id) {
     this.title = title
     this.body = body
-    this.star = false
-    this.id = Date.now()
+    this.star = star || false
+    this.id = id || Date.now()
   }
   updateIdea() {
     if (!this.star) {
@@ -11,7 +11,16 @@ class Idea {
     } else {
       this.star = false
     }
+    this.saveToStorage()
   }
-  //saveToStorage()
-  //deleteFromStorage()
+  saveToStorage() {
+    var ideaAsString = JSON.stringify(this);
+    localStorage.setItem(this.id, ideaAsString);
+  }
+  deleteFromStorage() {
+    localStorage.removeItem(this.id);
+  }
 }
+
+
+//save an object to local storage with

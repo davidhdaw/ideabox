@@ -26,6 +26,7 @@ showStarredIdeasButton.addEventListener('click', showStarredIdeas);
 showAllIdeasButton.addEventListener('click', showAllIdeas);
 searchIdeas.addEventListener('input', searchCards);
 searchFavoriteIdeas.addEventListener('input', searchFavoriteCards);
+window.addEventListener("load", repopulateIdeas);
 
 //Data model functions
 function addToIdeaList() {
@@ -33,11 +34,13 @@ function addToIdeaList() {
   var userBody = bodyInput.value;
   var newIdea = new Idea(userTitle, userBody);
   ideaList.push(newIdea);
+  newIdea.saveToStorage();
 };
 
 function deleteFromArray(cardId) {
   for (var i = 0; i < ideaList.length; i++) {
     if (cardId === ideaList[i].id) {
+    ideaList[i].deleteFromStorage();
     ideaList.splice(i, 1);
     }
   }
@@ -191,3 +194,24 @@ function checkInput(event) {
 function preventFakeButtonReload(event) {
   event.preventDefault();
 }
+
+function storageToArray() {
+  var holdingArray = Object.values(localStorage)
+  for (var i = 0; i<holdingArray.length; i++) {
+    var parsedObject = JSON.parse(holdingArray[i]);
+    var parsedIdea = new Idea (parsedObject.title, parsedObject.body, parsedObject.star, parsedObject.id);
+    ideaList.push(parsedIdea);
+  }
+}
+
+function repopulateIdeas() {
+  storageToArray();
+  ideaList.sort(function (a, b) {
+  return a.id - b.id;
+});
+  showAllIdeas();
+}
+//on page load
+//run storage to array
+//sort array by id numbers
+//print array
