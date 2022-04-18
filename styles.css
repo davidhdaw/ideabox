@@ -53,17 +53,16 @@ main {
   height: 50%;
 }
 
-form label, input, button, .body-input {
-  font-size: 1em;
-  margin: 5px;
-  /* width: 100%; */
-}
-
 form {
   display: flex;
   flex-direction: column;
   width: 40%;
   padding: 30px 0px;
+}
+
+form label, input, button, .body-input {
+  font-size: 1em;
+  margin: 5px;
 }
 
 form label {
