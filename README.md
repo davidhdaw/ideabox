@@ -31,10 +31,15 @@ Ideabox is a webpage that allows you to add your ideas to a virtual box so that 
 
 ### Features
 - User can add a title and idea input to create a new idea card.
+![Create New Card](/assets/Gif%201%20ideabox.gif)
 - User can favorite their best ideas, which can be viewed by clicking the _Show Starred Ideas_ button.
+![Favorite Ideas](/assets/Gif%202%20ideabox.gif)
 - User can search for ideas that contain a specific word or phrase.
+![Search Ideas](/assets/Gif%203%20ideabox.gif)
 - User can delete idea cards once they are no longer needed.
+![Delete Cards](/assets/Gif%204%20ideabox.gif)
 - Webpage has local storage feature.
+![Local Storage](/assets/Gif%205%20ideabox.gif)
 
 
 ### Reflection
@@ -43,7 +48,7 @@ an opportunity to do our own researching. This will carry over into our careers 
 to do independent research to find solutions.
 - We learned that some functionality was easy to reuse, however other functions were unexpectedly difficult to reuse. It was interesting to see
 how the code we wrote in some ways dictated what code we wrote later.
-- Teamwork makes the dream work. 
+- Teamwork makes the dream work.
 
 
 ### Future Features
