@@ -49,7 +49,7 @@ to do independent research to find solutions.
 - We learned that some functionality was easy to reuse, however other functions were unexpectedly difficult to reuse. It was interesting to see
 how the code we wrote in some ways dictated what code we wrote later.
 - Teamwork makes the dream work.
-
+![teamwork](https://user-images.githubusercontent.com/99382481/163876131-cc5b620d-540a-4ebd-b4d1-32fcec783c2b.png)
 
 ### Future Features
 - Allow user to edit ideas once they are submitted.
